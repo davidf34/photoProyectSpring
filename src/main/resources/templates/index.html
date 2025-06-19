@@ -13,7 +13,7 @@
         <img th:src="@{'/uploads/' + ${photo.imagePath}}" alt="imagen" />
         <h3 th:text="${photo.title}"></h3>
         <p th:text="${photo.description}"></p>
-        <a th:href="@{'/delete/' + ${photo.id}}">Eliminar</a>
+        <a th:href="@{'/delete/' + (${photo.id})}">Eliminar</a>
     </div>
 </div>
 </body>

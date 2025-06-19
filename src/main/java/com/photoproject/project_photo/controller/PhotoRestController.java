@@ -16,9 +16,6 @@ public class PhotoRestController {
     @GetMapping("/photo_details")
     public  PhotoDTO clasePhoto(){
         PhotoDTO photo = new PhotoDTO();
-        photo.setDescription("Imagen de un alcón volando");
-        photo.setTitle("Imagen de un alcón");
-        photo.setImagePath("/home");
         return photo;
     }
 

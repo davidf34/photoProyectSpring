@@ -21,6 +21,7 @@ public class PhotoService {
 
         return repo.findAll().stream().map(photo -> {
             PhotoDTO dto = new PhotoDTO();
+            dto.setId(photo.getId());
             dto.setTitle(photo.getTitle());
             dto.setDescription(photo.getDescription());
             dto.setImagePath(photo.getImagePath());
