@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Agregar Foto</title>
+</head>
+<body>
+<h1>Agregar Nueva Foto</h1>
+<form action="#" th:action="@{/add}" th:object="${photo}" method="post" enctype="multipart/form-data">
+    <label>Título: <input type="text" th:field="*{title}" /></label><br/>    <!-- th:field="*{title}": Thymeleaf usará el campo photo.title -->
+    <label>Descripción: <input type="text" th:field="*{description}" /></label><br/>
+    <label>Imagen: <input type="file" name="imageFile" /></label><br/>
+    <button type="submit">Guardar</button>
+</form>
+<a href="/">Volver</a>
+</body>
+</html>
