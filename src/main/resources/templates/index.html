@@ -10,10 +10,11 @@
 <a href="/add">Agregar Nueva Foto</a>
 <div class="gallery">
     <div class="photo" th:each="photo : ${photos}">
-        <img th:src="@{'/uploads/' + ${photo.imagePath}}" alt="imagen" />
+        <img th:src="@{'/Upload/' + ${photo.imagePath}}" alt="imagen" />
+        <h1 th:text="${photo.imagePath}"></h1>
         <h3 th:text="${photo.title}"></h3>
         <p th:text="${photo.description}"></p>
-        <a th:href="@{'/delete/' + (${photo.id})}">Eliminar</a>
+        <a th:href="@{'/delete/' + ${photo.id}}">Eliminar</a>
     </div>
 </div>
 </body>

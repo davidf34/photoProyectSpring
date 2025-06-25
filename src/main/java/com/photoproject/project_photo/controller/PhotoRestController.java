@@ -16,6 +16,8 @@ public class PhotoRestController {
     @GetMapping("/photo_details")
     public  PhotoDTO clasePhoto(){
         PhotoDTO photo = new PhotoDTO();
+        photo.setId(1L);
+        photo.setTitle("Titulo de la obra");
         return photo;
     }
 
