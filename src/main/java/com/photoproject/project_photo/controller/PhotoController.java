@@ -14,15 +14,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.PostMapping;
+
 
 
 
 @Controller
 public class PhotoController {
     private final PhotoService service;
-
+    
     @Value("${upload.dir}")
     private String uploadDir;
     //Este bloque se inyecta automaticamente para lograr usar la ID(inyeccion de dependencias) correctamente
@@ -43,6 +45,20 @@ public class PhotoController {
                                                                //Esto va ligado con el PostMapping, porque es la forma en la que se enviaría la peticion y por eso se debe 
                                                                //colocar el @ModelAttribute
         return "add-photo";
+    }
+
+    // @GetMapping("/like/{id}")
+    // public String likePhoto(@PathVariable Long id, Model model) {
+    //     service.increaseLikes(id);
+
+    //     return "redirect:/";
+    // }
+    
+    //Integración con JS
+    @GetMapping("/like/{id}")
+    @ResponseBody //Esta anotacion hace que el metodo devuelva JSON en lugar de una vista
+    public int likePhoto(@PathVariable Long id) {
+        return service.increaseLikesAndReturn(id);
     }
 
 

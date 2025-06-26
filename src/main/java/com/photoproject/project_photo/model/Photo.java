@@ -13,6 +13,7 @@ public class Photo {
     private Long id;
 
     private String title, description, imagePath;
+    private int likes;
 
     public Long getId() {
         return id;
@@ -44,6 +45,14 @@ public class Photo {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
     
     

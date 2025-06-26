@@ -14,8 +14,13 @@
         <h1 th:text="${photo.imagePath}"></h1>
         <h3 th:text="${photo.title}"></h3>
         <p th:text="${photo.description}"></p>
+        <a href="#" class="like-button" th:attr="data-id=${photo.id}">
+            ❤️ Like <span class="like-count" th:id="'likes-' + ${photo.id}" th:text="${photo.likes}">0</span>
+        </a>
+
         <a th:href="@{'/delete/' + ${photo.id}}">Eliminar</a>
     </div>
 </div>
+<script th:src="@{/like-handler.js}"></script>
 </body>
 </html>

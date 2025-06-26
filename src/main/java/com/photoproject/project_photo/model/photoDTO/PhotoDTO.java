@@ -3,6 +3,7 @@ package com.photoproject.project_photo.model.photoDTO;
 public class PhotoDTO {
     private String title, description,imagePath;
     private Long id;
+    private int likes;
 
     public String getTitle() {
         return title;
@@ -34,6 +35,14 @@ public class PhotoDTO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
     
 }

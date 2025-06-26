@@ -1,6 +1,7 @@
 package com.photoproject.project_photo.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class PhotoService {
             dto.setTitle(photo.getTitle());
             dto.setDescription(photo.getDescription());
             dto.setImagePath(photo.getImagePath());
+            dto.setLikes(photo.getLikes());
             return dto;
         }).collect(Collectors.toList());
     }
@@ -41,4 +43,31 @@ public class PhotoService {
     public Photo getPhoto(Long id){
         return repo.findById(id).orElse(null);
     }
+    // //metodo para incrementar lo likes cada que damos click al boton
+    // public void increaseLikes(Long id){
+    //     //Usamos el objeto optional ya que nos permite realizar busquedas sin tener el error de NullPointerException ya que la consulta puede NO traer resultados
+    //     Optional<Photo> optionalPhoto = repo.findById(id);
+    //     //validamos que si haya encontrado una foto con el id
+    //     if (optionalPhoto.isPresent()) {
+    //         //obtenemos el objeto real dentro del Optional
+    //         Photo photo = optionalPhoto.get();
+    //         //Incrementamos el numero de likes
+    //         photo.setLikes(photo.getLikes() + 1);
+    //         //guardamos la foto en la BD
+    //         repo.save(photo);
+    //     }
+    // }
+
+    //metodo para incrementar likes integrando JS
+    public int increaseLikesAndReturn(Long id){
+        Optional<Photo> optionalPhoto = repo.findById(id);
+        if (optionalPhoto.isPresent()) {
+            Photo photo = optionalPhoto.get();
+            photo.setLikes(photo.getLikes() + 1);
+            repo.save(photo);
+            return photo.getLikes();
+        }
+        return -1; //error controlado
+    }
+
 }
